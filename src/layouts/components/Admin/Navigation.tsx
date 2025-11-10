@@ -14,7 +14,7 @@ import { IoPerson } from "react-icons/io5";
 export default function Sidebar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-    const [go_to_dashboard, setGoToDashboard] = useState("https://chromewebstore.google.com/detail/ashdeck-website-blocker-p/ahdbmagpbepplcdlfodgilcljafooimc")
+    // const [go_to_dashboard, setGoToDashboard] = useState("https://chromewebstore.google.com/detail/ashdeck-website-blocker-p/ahdbmagpbepplcdlfodgilcljafooimc")
 
     const { handleLogout} = useAuth();
     const location = useLocation(); // Get the current location

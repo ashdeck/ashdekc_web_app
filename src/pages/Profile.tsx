@@ -19,6 +19,10 @@ export default function Profile() {
     const userString = localStorage.getItem("user");
     const user_info: UserInfo | null = userString ? JSON.parse(userString) : null;
 
+    if (!user_info) {
+        return <div className="p-4 text-gray-500">Loading...</div>;
+    }
+
     const ui_mapping = {
         info: <Info info={user_info} />,
         delete_account: <DeleteAccount />,

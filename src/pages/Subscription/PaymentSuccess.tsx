@@ -42,12 +42,12 @@ const PaymentStatus = () => {
     verifyPaymentStatus();
   }, []);
 
-  const handleOpenNewTab = () => {
-    window.open('', '_blank');
-    setTimeout(() => {
-      window.close();
-    }, 1000);
-  };
+  // const handleOpenNewTab = () => {
+  //   window.open('', '_blank');
+  //   setTimeout(() => {
+  //     window.close();
+  //   }, 1000);
+  // };
 
   const handleRetryPayment = () => {
     // Redirect back to pricing page or specific payment retry flow

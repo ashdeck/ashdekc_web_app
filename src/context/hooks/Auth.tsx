@@ -3,6 +3,7 @@ import { createContext, PropsWithChildren, useContext, useState, useEffect } fro
 import { login, logout } from "../../api/authentication";
 import { toast } from "react-toastify";
 import { google_auth } from "../../api/authentication";
+import axios from "axios";
 
 
 type AuthContext = {
@@ -57,7 +58,9 @@ export default function AuthProvider({ children }: AuthProviderProps) {
                 setCurrentUser(user);
             } catch (error) {
                 if (error){
-                    toast.error(error.response.data.detail)
+                    if (axios.isAxiosError(error)){
+                        toast.error(error.response?.data.detail)
+                    }
                 } else {
                     toast.error("Error fetch user info")
                 }
@@ -67,11 +70,17 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             setTokens(tokens);
         } catch (error) {
             // toast("Incorrect email or password.")
-            if (error?.response.status == 401){
+            if (error){
+                    if (axios.isAxiosError(error)){
+                        if (error.response?.status == 401){
                 toast(error.response.data.detail)
             } else {
                 toast("There was a problem logging into your account.")
             }
+                    }
+                } else {
+                    toast.error("Error fetch user info")
+                }
             setCurrentUser(null);
             setTokens(null);
         }
@@ -89,6 +98,7 @@ export default function AuthProvider({ children }: AuthProviderProps) {
             localStorage.removeItem("user");
             localStorage.removeItem("tokens");
         } catch(error) {
+            console.log(error)
             setCurrentUser(null);
             setTokens(null);
             localStorage.removeItem("user");
