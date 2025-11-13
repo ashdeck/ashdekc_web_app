@@ -26,11 +26,11 @@ const ForgotPassword = () => {
             <div className="flex flex-col justify-center xl:flex-row items-center h-screen">
                 <div className="bg-primary h-full w-[30%] flex items-center justify-center">
                     <div className="flex flex-col justify-center items-center h-1/2  gap-4">
-                        <div className="text-black max-w-72 mb-8 flex justify-center items-center">
+                        <div className="text-black max-w-80 mb-8 flex justify-center items-center">
                             <div className="h-full flex items-center pr-4 justify-center border-r border-black">
                                 <img width={100} src="/images/ashdeck-logo-2.png" alt="New ink gallery logo" />
                             </div>
-                            <h1 className="font-semibold text-2xl text-center pl-4">Forgot Password</h1>
+                            <h1 className="font-semibold text-base lg:text-2xl text-center pl-4">Forgot Password</h1>
                             {/* <p className="font-bold text-center uppercase text-lg">Login</p> */}
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -50,10 +50,10 @@ const ForgotPassword = () => {
 
                         <div className="mb-2 flex justify-between w-full">
                                 <a href="/login">
-                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-lg hover:transition-all hover:text-black/60">Login</p>
+                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-base hover:transition-all hover:text-black/60">Login</p>
                                 </a>
                                 <a href="/signup">
-                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-lg hover:transition-all hover:text-black/60">Signup</p>
+                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-base hover:transition-all hover:text-black/60">Signup</p>
                                 </a>
                         </div>
                     </div>

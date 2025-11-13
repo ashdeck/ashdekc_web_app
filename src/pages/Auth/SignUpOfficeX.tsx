@@ -2,27 +2,33 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import {CreateUserAccount as SignupData} from "../../types/Auth"
+import {CreateUserAccountOfficeX as SignupData} from "../../types/Auth"
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Background from "../../components/common/Background";
 import { BsGoogle } from "react-icons/bs";
-import { create_account } from "../../api/authentication";
+import { create_account_office_x } from "../../api/authentication";
 import { google_init_auth } from "../../api/authentication";
 
 
-const Signup = () => {
+const SignupOfficeX = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm<SignupData>();
     const [showPassword, setShowPassword] = useState(false)
-    const redirect_url = window.location.origin+"/verification_success"
+    const redirect_url = window.location.origin+"/signup_success"
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const email = urlParams.get("email") || ""
+    const officeXID = urlParams.get("office_x_id") || ""
 
 
     const onSubmit = async (data: SignupData) => {
         data.redirect_url = redirect_url
-        console.log("Submitting")
+        data.office_x_id = officeXID
         try {
 
-            await create_account(data);
+            await create_account_office_x(data);
+            navigate(redirect_url)
+            toast.success("Your account has been created successfully. Check your email address for instructions to use Ashdeck.")
             navigate("/login");
         } catch (error) {
             console.log(error)
@@ -31,9 +37,8 @@ const Signup = () => {
     };
 
     const handle_init_google_auth = async () => {
-        const google_redirect_url = window.location.origin+"/signup_success"
         try {
-            const res = await google_init_auth(google_redirect_url);
+            const res = await google_init_auth(redirect_url);
             console.log(res);
             // Opens in new tab
             window.open(res.url, 'noopener,noreferrer');
@@ -69,7 +74,9 @@ const Signup = () => {
                                 <div className="w-full">
                                     <input
                                         type="text"
-                                        className="rounded-md py-2 w-full text-black px-2 outline-none bg-transparent border active:bg-transparent"
+                                        defaultValue={email}
+                                        disabled
+                                        className="rounded-md py-2 w-full text-black/50 px-2 outline-none bg-transparent border active:bg-transparent"
                                         placeholder="Email"
                                         {...register("email", { required: true, pattern: /^\S+@\S+$/ })}
                                     />
@@ -97,7 +104,7 @@ const Signup = () => {
                                 </a>
                         </div>
 
-                        <button onClick={handle_init_google_auth} type="submit" className="mt-4 text-black hover:transition-all hover:border-black/60 hover:text-black/60 bg-transparent border border-black rounded-3xl py-2 px-2 outline-none focus:outline-none active:outline-none w-full"><div className="flex gap-2 items-center justify-center"><div><BsGoogle /> </div><p>Continue with Google</p></div></button>
+                        <button onClick={handle_init_google_auth} type="submit" className="mt-4 hidden text-black hover:transition-all hover:border-black/60 hover:text-black/60 bg-transparent border border-black rounded-3xl py-2 px-2 outline-none focus:outline-none active:outline-none w-full"><div className="flex gap-2 items-center justify-center"><div><BsGoogle /> </div><p>Continue with Google</p></div></button>
                     </div>
                 </div>
             </div>
@@ -105,4 +112,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignupOfficeX;

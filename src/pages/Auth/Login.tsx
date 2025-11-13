@@ -72,7 +72,7 @@ const Login = () => {
                             <div className="h-full flex items-center pr-4 justify-center border-r border-black">
                                 <img width={100} src="/images/ashdeck-logo-2.png" alt="New ink gallery logo" />
                             </div>
-                            <h1 className="font-semibold text-2xl text-center pl-4 text-black">Login</h1>
+                            <h1 className="font-semibold text-base lg:text-2xl text-center pl-4 text-black">Login</h1>
                             {/* <p className="font-bold text-center uppercase text-lg">Login</p> */}
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -101,10 +101,10 @@ const Login = () => {
 
                         <div className="mb-2 flex justify-between w-full">
                                 <a href="/forgot_password">
-                                    <p className=" text-blacke font-semibold cursor-pointer text-sm lg:text-lg hover:transition-all hover:text-black/60">Forgot password?</p>
+                                    <p className=" text-blacke font-semibold cursor-pointer text-sm lg:text-base hover:transition-all hover:text-black/60">Forgot password?</p>
                                 </a>
                                 <a href="/signup">
-                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-lg hover:transition-all hover:text-black/60">Signup</p>
+                                    <p className=" text-black font-semibold cursor-pointer text-sm lg:text-base hover:transition-all hover:text-black/60">Signup</p>
                                 </a>
                         </div>
 

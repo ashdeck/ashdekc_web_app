@@ -35,7 +35,7 @@ const ResetPassword = () => {
                             <div className="h-full flex items-center pr-4 justify-center border-r border-black">
                                 <img width={100} src="/images/ashdeck-logo-2.png" alt="New ink gallery logo" />
                             </div>
-                            <h1 className="font-semibold text-2xl text-center pl-4">Reset</h1>
+                            <h1 className="font-semibold text-base lg:text-2xl text-center pl-4">Reset</h1>
                             {/* <p className="font-bold text-center uppercase text-lg">Login</p> */}
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>

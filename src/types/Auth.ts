@@ -48,6 +48,15 @@ export type CreateUserAccount = {
     redirect_url?: string
 }
 
+export type CreateUserAccountOfficeX = {
+    name: string
+    email: string
+    password: string
+    created_at?: Date,
+    redirect_url?: string
+    office_x_id: string
+}
+
 
 export type ChangePassword = {
     old_password: string

@@ -1,6 +1,6 @@
 import request from "../utils/network"
 import { Login, ResetPasswordRequest, UpdateUserInfo } from "../types/Auth";
-import { CreateUserAccount, ChangePassword, ResetPassword, Logout } from "../types/Auth";
+import { CreateUserAccount, CreateUserAccountOfficeX, ChangePassword, ResetPassword, Logout } from "../types/Auth";
 
 export const login = async (data: Login) => await request({
     method: "POST",
@@ -72,6 +72,12 @@ export const reset_password = async (data: ResetPassword, token: string) => awai
 export const create_account = async (data: CreateUserAccount) => await request ({
         method: "POST",
         url: "/auth/basic",
+        data: data
+    })
+
+export const create_account_office_x = async (data: CreateUserAccountOfficeX) => await request ({
+        method: "POST",
+        url: "/auth/basic/office_x",
         data: data
     })
 

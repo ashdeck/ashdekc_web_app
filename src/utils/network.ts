@@ -1,5 +1,6 @@
 import axios from "axios"
 export const apiUrl = "https://api.ashdeck.com"
+// export const apiUrl = "http://localhost:8000"
 
 import {
     AxiosRequestConfig,
