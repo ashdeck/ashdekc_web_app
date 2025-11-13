@@ -14,7 +14,7 @@ const SignupOfficeX = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm<SignupData>();
     const [showPassword, setShowPassword] = useState(false)
-    const redirect_url = window.location.origin+"/signup_success"
+    const redirect_url = window.location.origin+"/verification_success"
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const email = urlParams.get("email") || ""
