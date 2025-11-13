@@ -23,7 +23,7 @@ const Signup = () => {
         try {
 
             await create_account(data);
-            navigate("/login");
+            navigate("/signup_success");
         } catch (error) {
             console.log(error)
             toast.error("Failed to signup");

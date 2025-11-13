@@ -29,7 +29,7 @@ const SignupOfficeX = () => {
             await create_account_office_x(data);
             navigate(redirect_url)
             toast.success("Your account has been created successfully. Check your email address for instructions to use Ashdeck.")
-            navigate("/login");
+            navigate("/signup_success");
         } catch (error) {
             console.log(error)
             toast.error("Failed to signup");
