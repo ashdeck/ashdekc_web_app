@@ -8,6 +8,7 @@ import Background from "../../components/common/Background";
 import { BsGoogle } from "react-icons/bs";
 import { create_account_office_x } from "../../api/authentication";
 import { google_init_auth } from "../../api/authentication";
+import { AxiosError } from "axios";
 
 
 const SignupOfficeX = () => {
@@ -31,15 +32,15 @@ const SignupOfficeX = () => {
             toast.success("Your account has been created successfully. Check your email address for instructions to use Ashdeck.")
             navigate("/signup_success");
         } catch (error) {
-            console.log(error)
-            toast.error("Failed to signup");
+            console.log(error, "office x error")
+            toast.error(error.message?.detail || "Failed to signup");
         }
     };
 
     const handle_init_google_auth = async () => {
         try {
             const res = await google_init_auth(redirect_url);
-            console.log(res);
+            console.log(res, "resist");
             // Opens in new tab
             window.open(res.url, 'noopener,noreferrer');
         } catch (error) {

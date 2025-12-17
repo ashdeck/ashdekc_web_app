@@ -85,7 +85,7 @@ const request = async (options: AxiosRequestConfig) => {
 
     const onError = function (error: AxiosError) {
         return Promise.reject({
-            message: error.message,
+            message: error,
             code: error.code,
             response: error.response,
         });
