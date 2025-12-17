@@ -18,7 +18,7 @@ const SignupOfficeX = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const email = urlParams.get("email") || ""
-    const officeXID = urlParams.get("office_x_id") || ""
+    const officeXID = urlParams.get("officex_customer_id") || ""
 
 
     const onSubmit = async (data: SignupData) => {
@@ -74,8 +74,7 @@ const SignupOfficeX = () => {
                                 <div className="w-full">
                                     <input
                                         type="text"
-                                        defaultValue={email}
-                                        disabled
+                                        defaultValue={email || ""}
                                         className="rounded-md py-2 w-full text-black/50 px-2 outline-none bg-transparent border active:bg-transparent"
                                         placeholder="Email"
                                         {...register("email", { required: true, pattern: /^\S+@\S+$/ })}
