@@ -8,7 +8,7 @@ import Background from "../../components/common/Background";
 import { BsGoogle } from "react-icons/bs";
 import { create_account_office_x } from "../../api/authentication";
 import { google_init_auth } from "../../api/authentication";
-// import { AxiosError } from "axios";
+import { AxiosError } from "axios";
 
 
 const SignupOfficeX = () => {
@@ -33,7 +33,7 @@ const SignupOfficeX = () => {
             navigate("/signup_success");
         } catch (error) {
             console.log(error, "office x error")
-            toast.error(error.message?.detail || "Failed to signup");
+            toast.error("User with this email or office x ID already exists");
         }
     };
 
