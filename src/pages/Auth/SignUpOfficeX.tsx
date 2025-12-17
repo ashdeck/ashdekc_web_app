@@ -8,7 +8,6 @@ import Background from "../../components/common/Background";
 import { BsGoogle } from "react-icons/bs";
 import { create_account_office_x } from "../../api/authentication";
 import { google_init_auth } from "../../api/authentication";
-import { AxiosError } from "axios";
 
 
 const SignupOfficeX = () => {
