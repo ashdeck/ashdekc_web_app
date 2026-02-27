@@ -23,7 +23,7 @@ const DealCodesSignup = () => {
         try {
             await create_account_with_code(data);
             navigate("/signup_success");
-        } catch (error) {
+        } catch (error: any) {
             if (error?.message?.detail){
                 toast.error(error.message.detail);
             } else {
