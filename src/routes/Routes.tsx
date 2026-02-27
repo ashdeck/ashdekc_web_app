@@ -11,6 +11,7 @@ import PaymentSuccess from "../pages/Subscription/PaymentSuccess";
 import SignupSuccess from "../pages/Auth/SignUpSuccess";
 import VerificationSuccess from "../pages/Auth/VerificationSuccess";
 import DealCodesSignup from "../pages/Auth/DealCode";
+import NotFound from "../pages/NotFound";
 
 // Import all your components here (same as before)
 function AppRoutes() {
@@ -35,7 +36,7 @@ function AppRoutes() {
                     {/* <Route path="/upgrade" element={<Upgrade />} /> */}
                 </Route>
 
-                <Route path="*" element={<div>Page not found</div>} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     );
