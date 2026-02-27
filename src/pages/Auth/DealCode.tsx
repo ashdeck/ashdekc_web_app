@@ -2,15 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import {CreateUserAccount as SignupData} from "../../types/Auth"
+import {CreateUserWithCode as SignupData} from "../../types/Auth"
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Background from "../../components/common/Background";
 import { BsGoogle } from "react-icons/bs";
-import { create_account } from "../../api/authentication";
+import { create_account_with_code } from "../../api/authentication";
 import { google_init_auth } from "../../api/authentication";
 
 
-const Signup = () => {
+const DealCodesSignup = () => {
     const navigate = useNavigate();
     const { register, handleSubmit } = useForm<SignupData>();
     const [showPassword, setShowPassword] = useState(false)
@@ -21,12 +21,18 @@ const Signup = () => {
         data.redirect_url = redirect_url
         console.log("Submitting")
         try {
-
-            await create_account(data);
+            await create_account_with_code(data);
             navigate("/signup_success");
         } catch (error) {
-            console.log(error)
-            toast.error("Failed to signup");
+            if (error?.message?.detail){
+                toast.error(error.message.detail);
+            } else {
+                if (error?.response?.data?.detail){
+                    toast.error(error?.response?.data?.detail)
+                } else {
+                    toast.error("Failed to signup");
+                }
+            }
         }
     };
 
@@ -74,6 +80,16 @@ const Signup = () => {
                                         {...register("email", { required: true, pattern: /^\S+@\S+$/ })}
                                     />
                                 </div>
+                                <div className="w-full">
+                                    <input
+                                        type="text"
+                                        className="rounded-md py-2 w-full text-black px-2 outline-none bg-transparent border active:bg-transparent"
+                                        placeholder="Code"
+                                        minLength={8}
+                                        maxLength={12}
+                                        {...register("code", { required: true  })}
+                                    />
+                                </div>
                                 <div className="flex justify-between items-center rounded-md py-2 px-2 outline-none bg-transparent border">
                                     <input
                                         className="outline-none bg-transparent active:bg-transparent text-black"
@@ -97,7 +113,7 @@ const Signup = () => {
                                 </a>
                         </div>
 
-                        <button onClick={handle_init_google_auth} type="submit" className="mt-4 text-black hover:transition-all hover:border-black/60 hover:text-black/60 bg-transparent border border-black rounded-3xl py-2 px-2 outline-none focus:outline-none active:outline-none w-full"><div className="flex gap-2 items-center justify-center"><div><BsGoogle /> </div><p>Continue with Google</p></div></button>
+                        <button onClick={handle_init_google_auth} type="submit" className="mt-4 hidden text-black hover:transition-all hover:border-black/60 hover:text-black/60 bg-transparent border border-black rounded-3xl py-2 px-2 outline-none focus:outline-none active:outline-none w-full"><div className="flex gap-2 items-center justify-center"><div><BsGoogle /> </div><p>Continue with Google</p></div></button>
                     </div>
                 </div>
             </div>
@@ -105,4 +121,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default DealCodesSignup;

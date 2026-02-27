@@ -10,6 +10,7 @@ import Pricing from "../pages/Subscription/Pricing";
 import PaymentSuccess from "../pages/Subscription/PaymentSuccess";
 import SignupSuccess from "../pages/Auth/SignUpSuccess";
 import VerificationSuccess from "../pages/Auth/VerificationSuccess";
+import DealCodesSignup from "../pages/Auth/DealCode";
 
 // Import all your components here (same as before)
 function AppRoutes() {
@@ -20,6 +21,7 @@ function AppRoutes() {
                 {/* add signup, change password, recover password */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/signup_with_code" element={<DealCodesSignup />} />
                 <Route path="/signup_office_x" element={<SignupOfficeX />} />
                 <Route path="/signup_success" element={<SignupSuccess />} />
                 <Route path="/verification_success" element={<VerificationSuccess />} />
