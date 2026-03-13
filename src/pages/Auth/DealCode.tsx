@@ -97,6 +97,7 @@ const DealCodesSignup = () => {
                                         type={!showPassword ? "password": "text"}
                                         placeholder="Password"
                                         {...register("password", { required: true })}
+                                        minLength={8}
                                     />
                                     <div className="text-black" onClick={()=>setShowPassword(!showPassword)} >{!showPassword ? <FaEyeSlash /> : <FaEye />}</div>
                                 </div>
