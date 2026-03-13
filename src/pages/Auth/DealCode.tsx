@@ -22,6 +22,7 @@ const DealCodesSignup = () => {
         console.log("Submitting")
         try {
             await create_account_with_code(data);
+            toast.success("Code redeemed successfully")
             navigate("/signup_success");
         } catch (error: any) {
             if (error?.message?.detail){
